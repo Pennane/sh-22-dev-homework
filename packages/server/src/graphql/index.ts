@@ -13,11 +13,16 @@ export const graphQLSchema = buildSchema(`
 
   type Query {
     characters: [Character]
+    character(id:Int!): Character
   }
 `);
 
 // Passing in ctx to all resolvers for dependency injection
 // All resolvers have access to all handlers and globals
-export const createResolvers = (ctx: Context) => ({
-  characters: ctx.handlers.character.getAll(ctx, {}),
-});
+export const createResolvers = (ctx: Context) => {
+  return {
+    characters: ctx.handlers.character.getAll(ctx, {}),
+    character: ({ id }: { id: number }) =>
+      ctx.handlers.character.getById(ctx, id),
+  };
+};
