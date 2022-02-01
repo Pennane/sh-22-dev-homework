@@ -8,7 +8,12 @@ export type AppConfig = {
 };
 
 export type Character = {
+  id: number;
   name: string;
+  description: string;
+  age: number;
+  happiness: number;
+  hunger: number;
 };
 
 export type Handler<Args extends unknown, ReturnValue extends unknown> = (

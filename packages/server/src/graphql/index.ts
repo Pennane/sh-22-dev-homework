@@ -3,7 +3,12 @@ import { Context } from '../types/global';
 
 export const graphQLSchema = buildSchema(`
   type Character {
+    id: Int!
     name: String!
+    description: String!
+    age: Int!
+    happiness: Int!
+    hunger: Int!
   }
 
   type Query {
