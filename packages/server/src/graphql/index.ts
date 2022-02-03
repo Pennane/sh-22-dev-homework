@@ -26,7 +26,7 @@ export const graphQLSchema = buildSchema(`
 // All resolvers have access to all handlers and globals
 export const createResolvers = (ctx: Context) => {
   return {
-    characters: ctx.handlers.character.getAll(ctx, {}),
+    characters: () => ctx.handlers.character.getAll(ctx, {}),
     character: ({ id }: { id: number }) =>
       ctx.handlers.character.getById(ctx, id),
     petCharacter: ({ id }: { id: number }) =>
