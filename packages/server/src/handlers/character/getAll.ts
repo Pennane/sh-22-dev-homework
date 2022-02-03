@@ -7,7 +7,7 @@ export const getAll: Handler<unknown, Character[] | null> = async (
   try {
     const characters = await ctx.handlers.db.all<Character[]>(
       ctx,
-      'SELECT * FROM character WHERE id = ?',
+      'SELECT * FROM character',
       [],
     );
     return characters;
