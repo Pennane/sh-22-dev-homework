@@ -1,7 +1,9 @@
 import { Application } from 'express';
+import { Job } from 'node-schedule';
 import { Database } from 'sqlite3';
 import { characterConfig } from '../config';
 import { handlerTree } from '../handlers';
+import { ScheduleTree } from '../schedules';
 
 export type AppConfig = {
   port: number;
@@ -36,4 +38,7 @@ export type Context = {
     config: AppConfig;
   };
   handlers: typeof handlerTree;
+  schedules?: ScheduleTree;
 };
+
+export type Schedule = (ctx: Omit<Context, 'schedules'>) => Job;

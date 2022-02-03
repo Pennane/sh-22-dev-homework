@@ -16,6 +16,8 @@ export const characterConfig = {
     min: 0,
     max: 10,
   },
+  // Minutes between 1 and 60
+  deteriorateFrequency: 10,
 };
 
 const appConfig: AppConfig = {

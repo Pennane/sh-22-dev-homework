@@ -7,6 +7,7 @@ import sqlite3, { Database } from 'sqlite3';
 import { AppConfig, Context } from '../types/global';
 import { createTables, seedDatabase } from './db-utils';
 import { withHandlerTree } from '../handlers';
+import { withScheduleTree } from '../schedules';
 
 type App = {
   configure: (config: AppConfig) => App;
@@ -24,7 +25,9 @@ type App = {
 
 type FNStart = (this: App) => App;
 
-const withContextGlobals = (app: App): Omit<Context, 'handlers'> => {
+const withContextGlobals = (
+  app: App,
+): Omit<Context, 'handlers' | 'schedules'> => {
   if (!app.db || !app.server || !app.config) {
     throw Error('Unable to create context. Verify your configuration.');
   }
@@ -34,7 +37,7 @@ const withContextGlobals = (app: App): Omit<Context, 'handlers'> => {
 };
 
 const createContext = (app: App) =>
-  R.pipe(withContextGlobals, withHandlerTree)(app);
+  R.pipe(withContextGlobals, withHandlerTree, withScheduleTree)(app);
 
 const initializeDatabase = (config: AppConfig) => {
   const db = new sqlite3.Database(config.databasePath, err => {
@@ -96,6 +99,7 @@ export const start: FNStart = function () {
         graphqlHTTP({
           schema,
           rootValue: createResolvers(ctx),
+          graphiql: true,
         }),
       );
 

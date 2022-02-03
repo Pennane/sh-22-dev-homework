@@ -28,7 +28,9 @@ export const handlerTree = {
   },
 };
 
-export const withHandlerTree = (ctx: Omit<Context, 'handlers'>): Context => ({
+export const withHandlerTree = (
+  ctx: Omit<Context, 'handlers' | 'schedules'>,
+): Omit<Context, 'schedules'> => ({
   ...ctx,
   handlers: handlerTree,
 });
