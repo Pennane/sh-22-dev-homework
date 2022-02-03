@@ -2,10 +2,16 @@ import { Context } from '../types/global';
 
 import { getAll } from './character/getAll';
 import { getById } from './character/getById';
+
 import { increaseHappinessById } from './character/increaseHappinessById';
 import { decreaseHappinessById } from './character/decreaseHappinessById';
+
 import { increaseHungerById } from './character/increaseHungerById';
 import { decreaseHungerById } from './character/decreaseHungerById';
+
+import { increaseAgeById } from './character/increaseAgeById';
+import { decreaseAgeById } from './character/decreaseAgeById';
+
 import { createCharacter } from './character/createCharacter';
 import { removeCharacterById } from './character/removeCharacterById';
 
@@ -24,6 +30,8 @@ export const handlerTree = {
     decreaseHappinessById,
     increaseHungerById,
     decreaseHungerById,
+    increaseAgeById,
+    decreaseAgeById,
     createCharacter,
     removeCharacterById,
   },

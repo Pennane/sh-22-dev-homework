@@ -1,9 +1,11 @@
 import { Job } from 'node-schedule';
 import { Context } from '../types/global';
+
 import { deteriorate } from './character/deteriorate';
+import { age } from './character/age';
 
 const scheduleTree = {
-  character: { deteriorate },
+  character: { deteriorate, age },
 };
 
 type BaseScheduleTree = {
