@@ -6,9 +6,12 @@ import { increaseHappinessById } from './character/increaseHappinessById';
 import { decreaseHappinessById } from './character/decreaseHappinessById';
 import { increaseHungerById } from './character/increaseHungerById';
 import { decreaseHungerById } from './character/decreaseHungerById';
+import { createCharacter } from './character/createCharacter';
+import { removeCharacterById } from './character/removeCharacterById';
 
 import { one } from './database/one';
 import { all } from './database/all';
+import { run } from './database/run';
 
 // Add functions here to extend Context.handlers. These functions will be available in call stack where Context is available.
 // ctx.handlers.character.getAll is just an example. Feel free to refactor and adjust as seen fitting.
@@ -21,10 +24,13 @@ export const handlerTree = {
     decreaseHappinessById,
     increaseHungerById,
     decreaseHungerById,
+    createCharacter,
+    removeCharacterById,
   },
   db: {
     one,
     all,
+    run,
   },
 };
 
