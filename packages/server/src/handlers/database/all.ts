@@ -7,7 +7,7 @@ export const all: DatabaseHandler = (ctx, sql, params) =>
         reject(err);
       }
 
-      // TODO: Fix DatabaseHandler type rather than coverting the result type with 'as' keyword
+      // TODO: Fix DatabaseHandler type rather than converting the result type with 'as' keyword
       //@ts-expect-error
       resolve(result);
     });

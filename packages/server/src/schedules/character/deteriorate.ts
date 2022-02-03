@@ -20,7 +20,13 @@ export const deteriorate: Schedule = ctx => {
             return;
           }
 
-          await ctx.handlers.character.decreaseHappinessById(ctx, character.id);
+          if (character.happiness > appConfig.character.happiness.min) {
+            await ctx.handlers.character.decreaseHappinessById(
+              ctx,
+              character.id,
+            );
+            return;
+          }
         }),
       );
     } catch (err) {

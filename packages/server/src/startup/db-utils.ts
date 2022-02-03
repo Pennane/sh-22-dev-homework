@@ -21,17 +21,6 @@ export const createTables = (db: Database) => {
   });
 };
 
-/*
-AGE 1 - 3
-BABY
-CHILD
-ADULT
-
-HUNGER 0-5
-HAPPINESS 0-10
-
-*/
-
 export const seedDatabase = (db: Database) => {
   const porcu = {
     id: 1,
