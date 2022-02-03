@@ -21,6 +21,12 @@ export type Handler<Args extends unknown, ReturnValue extends unknown> = (
   args: Args,
 ) => Promise<ReturnValue>;
 
+export type DatabaseHandler = <ReturnValue extends unknown>(
+  ctx: Context,
+  sql: string,
+  params?: any[],
+) => Promise<ReturnValue>;
+
 export type Context = {
   globals: {
     server: Application;
