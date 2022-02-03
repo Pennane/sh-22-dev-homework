@@ -2,6 +2,7 @@ import { Context } from '../types/global';
 
 import { getAll } from './character/getAll';
 import { getById } from './character/getById';
+import { petById } from './character/petById';
 
 import { one } from './database/one';
 import { all } from './database/all';
@@ -13,6 +14,7 @@ export const handlerTree = {
   character: {
     getAll,
     getById,
+    petById,
   },
   db: {
     one,

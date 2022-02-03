@@ -15,6 +15,10 @@ export const graphQLSchema = buildSchema(`
     characters: [Character]
     character(id:Int!): Character
   }
+
+  type Mutation {
+    petCharacter(id:Int!): Character
+  }
 `);
 
 // Passing in ctx to all resolvers for dependency injection
@@ -24,5 +28,7 @@ export const createResolvers = (ctx: Context) => {
     characters: ctx.handlers.character.getAll(ctx, {}),
     character: ({ id }: { id: number }) =>
       ctx.handlers.character.getById(ctx, id),
+    petCharacter: ({ id }: { id: number }) =>
+      ctx.handlers.character.petById(ctx, id),
   };
 };
