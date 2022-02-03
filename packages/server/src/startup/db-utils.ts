@@ -3,7 +3,7 @@ import { Database } from 'sqlite3';
 export const createTables = (db: Database) => {
   const sql = `
     CREATE TABLE IF NOT EXISTS character (
-      id INTEGER PRIMARY KEY,
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
       description TEXT,
       age INTEGER,
