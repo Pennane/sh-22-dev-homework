@@ -1,10 +1,12 @@
 import { Application } from 'express';
 import { Database } from 'sqlite3';
+import { characterConfig } from '../config';
 import { handlerTree } from '../handlers';
 
 export type AppConfig = {
   port: number;
   databasePath: string;
+  character: typeof characterConfig;
 };
 
 export type Character = {

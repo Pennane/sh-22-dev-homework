@@ -7,8 +7,8 @@ export const createTables = (db: Database) => {
       name TEXT,
       description TEXT,
       age INTEGER,
-      happiness INTEGER DEFAULT 10,
-      hunger INTEGER DEFAULT 0
+      happiness INTEGER DEFAULT 5,
+      hunger INTEGER DEFAULT 5
     )
   `;
   return new Promise((resolve, reject) => {
@@ -21,11 +21,22 @@ export const createTables = (db: Database) => {
   });
 };
 
+/*
+AGE 1 - 3
+BABY
+CHILD
+ADULT
+
+HUNGER 0-5
+HAPPINESS 0-10
+
+*/
+
 export const seedDatabase = (db: Database) => {
   const porcu = {
     id: 1,
     name: 'Porcu',
-    age: 2,
+    age: 1,
     description: 'Wild beast',
   };
 
