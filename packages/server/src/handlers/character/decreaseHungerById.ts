@@ -1,10 +1,13 @@
 import { Character, Handler } from '../../types/global';
 
-export const petById: Handler<number, Character | null> = async (ctx, id) => {
+export const decreaseHungerById: Handler<number, Character | null> = async (
+  ctx,
+  id,
+) => {
   try {
     await ctx.handlers.db.one(
       ctx,
-      'UPDATE character SET happiness = happiness + 5 WHERE id = ?',
+      'UPDATE character SET hunger = hunger - 1 WHERE id = ?',
       [id],
     );
     return await ctx.handlers.character.getById(ctx, id);

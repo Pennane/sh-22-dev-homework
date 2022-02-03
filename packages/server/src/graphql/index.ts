@@ -18,6 +18,7 @@ export const graphQLSchema = buildSchema(`
 
   type Mutation {
     petCharacter(id:Int!): Character
+    feedCharacter(id:Int!): Character
   }
 `);
 
@@ -29,6 +30,8 @@ export const createResolvers = (ctx: Context) => {
     character: ({ id }: { id: number }) =>
       ctx.handlers.character.getById(ctx, id),
     petCharacter: ({ id }: { id: number }) =>
-      ctx.handlers.character.petById(ctx, id),
+      ctx.handlers.character.increaseHappinessById(ctx, id),
+    feedCharacter: ({ id }: { id: number }) =>
+      ctx.handlers.character.decreaseHungerById(ctx, id),
   };
 };
