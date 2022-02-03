@@ -6,7 +6,7 @@ export const createTables = (db: Database) => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
       description TEXT,
-      age INTEGER,
+      age INTEGER DEFAULT 1,
       happiness INTEGER DEFAULT 5,
       hunger INTEGER DEFAULT 5
     )
@@ -25,13 +25,12 @@ export const seedDatabase = (db: Database) => {
   const porcu = {
     id: 1,
     name: 'Porcu',
-    age: 1,
     description: 'Wild beast',
   };
 
   return new Promise((resolve, reject) =>
     db.run(
-      `INSERT INTO character (id, name, age, description) VALUES (?, ?, ?, ?)`,
+      `INSERT INTO character (id, name, description) VALUES (?, ?, ?)`,
       Object.values(porcu),
       (result: unknown, err: any) => {
         if (err) {
