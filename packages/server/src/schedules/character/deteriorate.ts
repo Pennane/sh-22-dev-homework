@@ -9,22 +9,23 @@ export const deteriorate: Schedule = ctx => {
   );
   return cron.scheduleJob(`*/${frequency} * * * *`, async () => {
     try {
-      const characters = await ctx.handlers.character.getAll(ctx, {});
+      const characters = await ctx.handlers.character.base.getAll(ctx, {});
 
       if (!characters) return;
 
       await Promise.all(
         characters.map(async character => {
           if (character.hunger < appConfig.character.hunger.max) {
-            await ctx.handlers.character.increaseHungerById(ctx, character.id);
+            await ctx.handlers.character.hunger.increase(ctx, {
+              id: character.id,
+            });
             return;
           }
 
           if (character.happiness > appConfig.character.happiness.min) {
-            await ctx.handlers.character.decreaseHappinessById(
-              ctx,
-              character.id,
-            );
+            await ctx.handlers.character.happiness.decrease(ctx, {
+              id: character.id,
+            });
             return;
           }
         }),

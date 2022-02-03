@@ -1,6 +1,9 @@
-import { Character, Handler } from '../../types/global';
+import { Character, Handler } from '../../../types/global';
 
-export const getById: Handler<number, Character | null> = async (ctx, id) => {
+export const getById: Handler<{ id: number }, Character | null> = async (
+  ctx,
+  { id },
+) => {
   try {
     const character = await ctx.handlers.db.one<Character>(
       ctx,

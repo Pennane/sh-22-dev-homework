@@ -1,4 +1,4 @@
-import { Character, Handler } from '../../types/global';
+import { Character, Handler } from '../../../types/global';
 
 export const getAll: Handler<unknown, Character[] | null> = async (
   ctx,

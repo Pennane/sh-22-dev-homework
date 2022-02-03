@@ -9,7 +9,7 @@ export const age: Schedule = ctx => {
   );
   return cron.scheduleJob(`*/${frequency} * * * *`, async () => {
     try {
-      const characters = await ctx.handlers.character.getAll(ctx, {});
+      const characters = await ctx.handlers.character.base.getAll(ctx, {});
 
       if (!characters) return;
 
@@ -19,7 +19,9 @@ export const age: Schedule = ctx => {
             return;
           }
 
-          await ctx.handlers.character.increaseAgeById(ctx, character.id);
+          await ctx.handlers.character.age.increase(ctx, {
+            id: character.id,
+          });
         }),
       );
     } catch (err) {

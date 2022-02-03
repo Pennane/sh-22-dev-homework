@@ -17,9 +17,9 @@ export const characterConfig = {
     max: 10,
   },
   // Duration between character deterioration - Values as minutes and between 1 and 60
-  deteriorateFrequency: 10,
+  deteriorateFrequency: 1,
   // Duration between character aging - Values as minutes and between 1 and 60
-  agingFrequency: 30,
+  agingFrequency: 1,
 };
 
 const appConfig: AppConfig = {

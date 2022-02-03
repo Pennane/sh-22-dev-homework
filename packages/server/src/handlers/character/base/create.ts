@@ -1,6 +1,6 @@
-import { Character, Handler } from '../../types/global';
+import { Character, Handler } from '../../../types/global';
 
-export const createCharacter: Handler<
+export const characterCreate: Handler<
   { name: string; description: string },
   Character | null
 > = async (ctx, { name, description }) => {

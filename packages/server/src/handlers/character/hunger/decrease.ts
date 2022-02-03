@@ -1,9 +1,9 @@
-import appConfig from '../../config';
-import { Character, Handler } from '../../types/global';
+import appConfig from '../../../config';
+import { Character, Handler } from '../../../types/global';
 
-export const decreaseHungerById: Handler<number, Character | null> = async (
+export const hungerDecrease: Handler<{ id: number }, Character | null> = async (
   ctx,
-  id,
+  { id },
 ) => {
   try {
     await ctx.handlers.db.one(
@@ -11,7 +11,7 @@ export const decreaseHungerById: Handler<number, Character | null> = async (
       'UPDATE character SET hunger = hunger - 1 WHERE id = ? AND hunger > ?',
       [id, appConfig.character.hunger.min],
     );
-    return await ctx.handlers.character.getById(ctx, id);
+    return await ctx.handlers.character.base.getById(ctx, { id });
   } catch (err) {
     console.error(err);
     return null;

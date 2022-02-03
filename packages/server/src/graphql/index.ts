@@ -28,21 +28,25 @@ export const graphQLSchema = buildSchema(`
 // All resolvers have access to all handlers and globals
 export const createResolvers = (ctx: Context) => {
   return {
-    characters: () => ctx.handlers.character.getAll(ctx, {}),
+    characters: () => ctx.handlers.character.base.getAll(ctx, {}),
     character: ({ id }: { id: number }) =>
-      ctx.handlers.character.getById(ctx, id),
+      ctx.handlers.character.base.getById(ctx, { id }),
     petCharacter: ({ id }: { id: number }) =>
-      ctx.handlers.character.increaseHappinessById(ctx, id),
+      ctx.handlers.character.happiness.increase(ctx, { id }),
     feedCharacter: ({ id }: { id: number }) =>
-      ctx.handlers.character.decreaseHungerById(ctx, id),
+      ctx.handlers.character.hunger.decrease(ctx, { id }),
     createCharacter: ({
       name,
       description,
     }: {
       name: string;
       description: string;
-    }) => ctx.handlers.character.createCharacter(ctx, { name, description }),
+    }) =>
+      ctx.handlers.character.base.create(ctx, {
+        name,
+        description,
+      }),
     removeCharacter: ({ id }: { id: number }) =>
-      ctx.handlers.character.removeCharacterById(ctx, id),
+      ctx.handlers.character.base.remove(ctx, { id }),
   };
 };
