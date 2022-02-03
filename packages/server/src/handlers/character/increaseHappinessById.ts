@@ -12,7 +12,8 @@ export const increaseHappinessById: Handler<number, Character | null> = async (
       [id, appConfig.character.happiness.max],
     );
     return await ctx.handlers.character.getById(ctx, id);
-  } catch {
+  } catch (err) {
+    console.error(err);
     return null;
   }
 };

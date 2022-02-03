@@ -9,7 +9,8 @@ export const getById: Handler<number, Character | null> = async (ctx, id) => {
     );
     if (!character) return null;
     return character;
-  } catch {
+  } catch (err) {
+    console.error(err);
     return null;
   }
 };

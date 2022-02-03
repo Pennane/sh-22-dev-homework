@@ -11,7 +11,8 @@ export const getAll: Handler<unknown, Character[] | null> = async (
       [],
     );
     return characters;
-  } catch {
+  } catch (err) {
+    console.error(err);
     return null;
   }
 };

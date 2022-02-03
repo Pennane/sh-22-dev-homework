@@ -12,7 +12,8 @@ export const increaseHungerById: Handler<number, Character | null> = async (
       [id, appConfig.character.hunger.max],
     );
     return await ctx.handlers.character.getById(ctx, id);
-  } catch {
+  } catch (err) {
+    console.error(err);
     return null;
   }
 };
