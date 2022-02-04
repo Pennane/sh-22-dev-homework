@@ -1,5 +1,53 @@
 # Summer Hunters 2022 - Developer Assignment
 
+## Implemented features
+
+### Backend:
+
+- Frontend friendly GraphQl routes
+  - Get all characters
+  - Get character by id
+  - Character creation
+  - Character removal
+  - Feeding characters
+  - Petting characters
+- Backend schedules
+  - Character deterioration
+    - Increases hunger automatically to maximum over time, then happiness to minimum.
+  - Character aging
+  - Frequencies can be modified from `config.ts`
+  - Uses node-schedule to schedule cron tasks
+- Simple promise-based database abstraction
+  - A bit more comfortable to use
+
+### Frontend
+
+- A proof of concept, main focus was on the server-side
+- Character feeding and petting
+- Single button for character creation
+- Poll the list of characters
+
+## Planned features
+
+### Backend
+
+- GraphQL pubsub subscriptions
+  - Send aging and deterioration changes through websockets
+  - This proved to be a slight headache with the current architecture
+- Database ORM abstraction
+- Near infinite ideas for different "Tamagotchi" functionalities
+
+### Frontend
+
+- Better character creation
+- Split components into more divisible components
+- Better persistance
+- Actual gameplay elements
+- Finetuning
+- Better looking buttons and attributes, icons
+- Display description on some sort of modal
+- Better typing
+
 ## Homework assignment
 
 Welcome to Summer Hunters 2022 assignment phase!
@@ -44,7 +92,7 @@ To install or activate required dependencies, run following commands
 
 You will need to install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) and [yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 
-### (N)ode (V)ersion (M)anager 
+### (N)ode (V)ersion (M)anager
 
 `nvm use`
 
