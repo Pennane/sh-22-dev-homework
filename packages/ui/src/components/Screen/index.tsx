@@ -9,9 +9,12 @@ const StyledScreen = styled.div`
   right: 0;
   margin: auto;
 
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   align-items: center;
+
+  width: 18.3em;
 `;
 
 export interface IScreenProps {}
