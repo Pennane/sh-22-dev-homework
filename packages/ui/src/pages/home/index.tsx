@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { BabyPorcu, Frame } from '../../assets';
 import { Character } from '../../components/Character';
 import { Screen } from '../../components/Screen';
+import { useInterval } from '../../hooks/useInterval';
 
 const query = gql`
   query GetCharacters {
@@ -25,8 +26,14 @@ const StyledHome = styled.div`
 `;
 
 export const Home: React.FC = () => {
-  // TODO: proper types, maybe shared with backend
-  const [result] = useQuery<{ characters: { name: string }[] }>({ query });
+  const [result, refetchResult] = useQuery<{ characters: ShortCharacter[] }>({
+    query,
+  });
+  useInterval(
+    () => refetchResult({ requestPolicy: 'network-only' }),
+    1000 * 60,
+  );
+
 
   if (result.fetching) {
     return <>TODO: handle loading</>;
