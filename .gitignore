@@ -14,3 +14,4 @@ dist-ssr
 !.yarn/sdks
 !.yarn/versions
 
+packages/server/db
