@@ -1,5 +1,11 @@
 # Summer Hunters 2022 - Developer Assignment
 
+## NOTE!
+
+The original seeded database was still part of the repository.
+That caused the application to work unexpectedly.
+Removing the database fixed the issues with the frontend, and even fixed some previously unknown bugs in the backend.
+
 ## Implemented features
 
 ### Backend:
